@@ -19,12 +19,12 @@ def fire_pixel_event(request):
     ACCESS_TOKEN = request.headers.get('token')
     PIXEL_ID = request.headers.get('pixel')
     
-    #Setup logs using logging library https://cloud.google.com/run/docs/logging
-    PROJECT = '****'
-    global_log_fields = {}
-    trace_header = request.headers.get('X-Cloud-Trace-Context')
-    trace = trace_header.split('/')
-    global_log_fields['logging.googleapis.com/trace'] = (f"projects/{PROJECT}/traces/{trace[0]}")
+    #Setup logs using logging library https://cloud.google.com/run/docs/logging if necessary 
+#     PROJECT = '****'
+#     global_log_fields = {}
+#     trace_header = request.headers.get('X-Cloud-Trace-Context')
+#     trace = trace_header.split('/')
+#     global_log_fields['logging.googleapis.com/trace'] = (f"projects/{PROJECT}/traces/{trace[0]}")
     
     #Initialize FB Conversions API and setup data for request
     FacebookAdsApi.init(access_token=ACCESS_TOKEN)
